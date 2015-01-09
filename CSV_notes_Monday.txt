@@ -1,0 +1,91 @@
+Week 3 - Monday notes
+
+CSV
+in irb, require 'csv'
+
+
+
+CSV.open("some_file.csv", "w") do |csv|
+ csv << ["hwllo", "world"]
+   end
+
+
+   To open this file, go to the folder, and select
+   hit the space bar to open a preview.
+
+   To read:
+   CSV.read 'ada_people.csv'  or you put in a hard coded file path
+
+
+   Collections  ---------------------------
+
+   do something to an array with a collection,
+   change (not permanent) each element of an array to an *
+
+   csv.collect do |row|
+     "*"
+   end
+
+   Each .vs collect
+
+
+   Changing rows and elements in a file:
+
+   CSV.open("new_file.csv", "w") do |file|
+    csv.each do |row|
+      row[0] = "**"
+    file << row
+     end
+
+
+  Sort:
+  [1,4,52,32,3].sort
+
+
+['a','1'].sort
+
+
+csv.sort_by{|row| row[-1]}  // for the farmers market csv, itwill throw an error
+due to nils
+
+csv.sort_by{|row| row[-1] || 'a'}  // the zip code is the last position
+csv.sort_by{|row| row[-1].to_i}
+csv.sort_by{|row| row[-2] = "Washington"}
+
+
+csv.sort_by{|m| m[-1].to_i}.first(2)
+
+csv.group_by{|m|  m[-2]}
+
+hash = csv.group_by{|m| m[-2]}
+hash["Washington"]
+
+CSV.open("markets.csv", 'r').each do |line|
+
+ i = 1
+ => 1
+ CSV.open("markets.csv", 'r').each do |line|
+     if i = 300
+     puts line
+    i = i+1
+     end
+  end
+
+Find the first market that starts with Y:
+csv.find {|m| m[1][0] == "Y"}
+
+Count number of markets with zip code greater than 80000
+csv.find_all {|m| m[-1].to_i > 80000 }.length
+
+
+csv.find_all {|k| (k[4] || ""}[0] == "Y"
+
+
+Compact:  compact will strip out all the nils out of an array
+
+Fork: clones repo from Ada to your repository
+
+
+FarMar::Market
+FarMar::Sale
+FarMar::Market.new

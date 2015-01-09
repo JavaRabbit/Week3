@@ -1,0 +1,32 @@
+Friday - Week 3 notes
+
+SELF
+
+Class Ghost
+
+  puts " This is just inside the class"
+  puts self.inspect
+
+  #self = Ghost
+
+  def name
+    puts " this is inside of #name"
+    #self = and instance
+    "Boo"
+  end
+
+  def full_name
+    name = "something" #local variable
+    self.name #this is calling the method called name
+  end
+
+
+  def self.make_ghost
+    puts "this is inside of self.make_ghost"
+    puts self.inspect
+    #self = Ghost
+    self.new
+    Ghost.new
+    new # these last 3 lines are the same
+  end
+end
